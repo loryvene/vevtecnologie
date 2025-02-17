@@ -7,6 +7,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -14,6 +15,18 @@
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
+
+        #image-container {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+        }
+
+            #image-container img {
+                width: 150px; /* Regola la dimensione dell'immagine */
+                height: auto;
+                border-radius: 10px;
+            }
 
         #counter-container {
             text-align: center;
@@ -49,7 +62,7 @@
             }
     </style>
     <script>
-    let intervalId = null;
+        let intervalId = null;
         let counter = 0;
 
         function startCounter() {
@@ -76,13 +89,19 @@
 
         function resumeCounter() {
             startCounter();
-
         }
+
         // Avvia automaticamente il contatore al caricamento della pagina
         window.onload = startCounter;
     </script>
 </head>
 <body>
+    <!-- Contenitore per l'immagine -->
+    <div id="image-container">
+        <img src="immagine1.png" alt="Immagine in alto">
+    </div>
+
+    <!-- Contenitore del contatore -->
     <div id="counter-container">
         <span id="lblCounter">0</span>
         <br />
