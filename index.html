@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatore Statico</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #counter-container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #lblCounter {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .btn {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+            .btn:active {
+                background-color: #003f7f;
+            }
+    </style>
+    <script>
+    let intervalId = null;
+        let counter = 0;
+
+        function startCounter() {
+            if (intervalId === null) {
+                intervalId = setInterval(() => {
+                    counter++;
+                    document.getElementById('lblCounter').innerText = counter;
+                }, 1000);
+            }
+        }
+
+        function stopCounter() {
+            if (intervalId !== null) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+
+        function resetCounter() {
+            stopCounter();
+            counter = 0;
+            document.getElementById('lblCounter').innerText = counter;
+        }
+
+        function resumeCounter() {
+            startCounter();
+
+        }
+        // Avvia automaticamente il contatore al caricamento della pagina
+        window.onload = startCounter;
+    </script>
+</head>
+<body>
+    <div id="counter-container">
+        <span id="lblCounter">0</span>
+        <br />
+        <button class="btn" onclick="stopCounter()">Ferma</button>
+        <button class="btn" onclick="resetCounter()">Azzera</button>
+        <button class="btn" onclick="resumeCounter()">Riprendi</button>
+    </div>
+</body>
+</html>
